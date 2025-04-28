@@ -1,4 +1,10 @@
 import boto3
+import requests
+
+r = requests.get("https://upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Ghana.svg")
+with open("gh_flag.png", "wb") as f:
+    f.write(r.content)
+
 s3 = boto3.client('s3', region_name='us-east-1')
 
 file_name = "gh_flag.png"
